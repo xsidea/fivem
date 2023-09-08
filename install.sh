@@ -1,10 +1,35 @@
 #!/bin/bash
 
-clear
+# Colors functions
+defaultMsg() {
+  echo -e "\\e[0m${*}\\e[0m"
+}
+greenMsg() {
+  echo -e "\\e[0;32m${*}\\e[0m"
+}
+redMsg() {
+  echo -e "\\e[0;31m${*}\\e[0m"
+}
+yellowMsg() {
+  echo -e "\\e[0;33m${*}\\e[0m"
+}
+cyanMsg() {
+  echo -e "\\e[0;36m${*}\\e[0m"
+}
+
+redMsg("Please execute the installation command with root privileges！")
+
+exit 1
+
 
 if [ "$(whoami)" != "root" ]; then
-	echo "Please run this script as sudo."
+	echo "Please execute the installation command with root privileges！"
 	exit 1
+fi
+
+is64bit=$(getconf LONG_BIT)
+if [ "${is64bit}" != '64' ];then
+	Red_Error "Sorry, the current version does not support 32bit systems!";
 fi
 
 ## install location
