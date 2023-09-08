@@ -17,7 +17,7 @@ cyanMsg() {
   echo -e "\\e[0;36m${*}\\e[0m"
 }
 
-redMsg("Please execute the installation command with root privileges！")
+redMsg("Please execute")
 
 exit 1
 
